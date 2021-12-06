@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import internal from 'stream';
 import PostApi from '../../api/post';
 import PostItem from '../../types/post';
 
@@ -24,26 +23,28 @@ const Item: React.FC = () => {
     
     return (
         <>
-            <h2>Post Item ID: { id }</h2><br />
-            <table>
-                <thead>
-                    <th>UserId</th>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Body</th>
-                </thead>
-                <tbody>
-                    {post && (
-                        <tr>
-                            <td>{ post.userId }</td>
-                            <td>{ post.id }</td>
-                            <td>{ post.title }</td>
-                            <td>{ post.body }</td>
-                        </tr>
-                    )}
-                </tbody>
-            </table>
-            
+            {post && (
+            <div>
+                <h2>Post Item ID: { id }</h2><br />
+                <a href="/posts">Return</a>
+                <table>
+                    <thead>
+                        <th>UserId</th>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Body</th>
+                    </thead>
+                    <tbody>
+                            <tr>
+                                <td>{ post.userId }</td>
+                                <td>{ post.id }</td>
+                                <td>{ post.title }</td>
+                                <td>{ post.body }</td>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
+            )}
         </>
     )
 }
