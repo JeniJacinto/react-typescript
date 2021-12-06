@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PostApi from '../../api/post';
 import PostItem from '../../types/post';
 
-export default function Posts () {
+const Posts: React.FC = () => {
     const [posts, setPosts] = useState<Array<PostItem>>([]);
     useEffect(() => {
         getPosts();
@@ -22,7 +22,7 @@ export default function Posts () {
 
     return (
         <>
-            <h1>Post List</h1>
+            <h1>Post List</h1><a href="/">Return</a>
             <table>
                 <thead>
                     <th>UserId</th>
@@ -43,4 +43,6 @@ export default function Posts () {
             </table>
         </>
     )
-}
+};
+
+export default Posts;

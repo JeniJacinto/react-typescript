@@ -4,7 +4,7 @@ import internal from 'stream';
 import PostApi from '../../api/post';
 import PostItem from '../../types/post';
 
-export default function Item () {
+const Item: React.FC = () => {
     const { id } = useParams();
     const [post, setPost] = useState<PostItem>();
     useEffect(() => {
@@ -47,3 +47,5 @@ export default function Item () {
         </>
     )
 }
+
+export default Item;
