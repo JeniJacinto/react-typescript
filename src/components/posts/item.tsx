@@ -1,28 +1,30 @@
-//import * as React from 'react';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import internal from 'stream';
 import PostApi from '../../api/post';
 import PostItem from '../../types/post';
 
-export default function Posts () {
-    const [posts, setPosts] = useState<Array<PostItem>>([]);
+export default function Item () {
+    const { id } = useParams();
+    const [post, setPost] = useState<PostItem>();
     useEffect(() => {
-        getPosts();
-    }, [posts]);
+        getPost(id);
+    }, [id]);
 
-    const getPosts = () => {
-        PostApi.getAll()
+    const getPost = (id: string | undefined) => {
+        PostApi.get(id)
          .then((response: any) => {
-            setPosts(response.data);
-            console.log(response.data);
+             setPost(response.data);
+             console.log(response.data);
          })
          .catch((e: Error) => {
              console.log(e);
          });
     };
-
+    
     return (
         <>
-            <h1>Post List</h1>
+            <h2>Post Item ID: { id }</h2><br />
             <table>
                 <thead>
                     <th>UserId</th>
@@ -31,16 +33,17 @@ export default function Posts () {
                     <th>Body</th>
                 </thead>
                 <tbody>
-                    {posts && posts.map((post, index) => (
-                        <tr key={index}>
+                    {post && (
+                        <tr>
                             <td>{ post.userId }</td>
                             <td>{ post.id }</td>
-                            <td><a href={`/posts/${post.id}`}>{ post.title }</a></td>
+                            <td>{ post.title }</td>
                             <td>{ post.body }</td>
                         </tr>
-                    ))}
+                    )}
                 </tbody>
             </table>
+            
         </>
     )
 }
