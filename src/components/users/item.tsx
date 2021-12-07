@@ -26,9 +26,8 @@ const Item: React.FC = () => {
         <>
             {user && (
             <div>
-                <h2>User Item ID: { id }</h2><br />
-                <a href="/users">Return</a>
-                <table>
+                <h2 className="p-2 bg-info text-white text-center">User Item ID: { id }</h2><br />
+                <table className="table table-striped">
                     <thead>
                         <th>ID</th>
                         <th>Name</th>
@@ -46,12 +45,15 @@ const Item: React.FC = () => {
                             <td>{ user.username }</td>
                             <td>{ user.email }</td>
                             <td>{ user.phone }</td>
-                            <td>{ user.address.street + " " + user.address.city }</td>
+                            <td>{ user.address.street + ", " + user.address.city }</td>
                             <td>{ user.website }</td>
                             <td>{ user.company.name }</td>
                         </tr>
                     </tbody>
                 </table>
+                <div className="d-grid">
+                    <a href="/users" className="btn btn-primary btn-block">Return User List</a>
+                </div>
             </div>
             )}
         </>

@@ -23,8 +23,8 @@ const Posts: React.FC = () => {
         <>
             {posts.length ? (
                 <div>
-                    <h1>Post List</h1><a href="/">Return</a>
-                    <table>
+                    <h1 className="p-2 bg-info text-white text-center">Post List</h1>
+                    <table className="table table-striped">
                         <thead>
                             <th>UserId</th>
                             <th>ID</th>

@@ -24,8 +24,8 @@ const Users: React.FC = () => {
         <>
             {users.length ? (
                 <div>
-                    <h1>User List</h1><a href="/">Return</a>
-                    <table>
+                    <h1 className="p-2 bg-info text-white text-center">User List</h1>
+                    <table className="table table-striped">
                         <thead>
                             <th>ID</th>
                             <th>Name</th>

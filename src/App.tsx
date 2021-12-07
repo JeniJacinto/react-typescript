@@ -1,7 +1,9 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './components/home'
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+
+import Header from './components/layouts/header';
 import Posts from './components/posts';
 import PostItem from './components/posts/item'
 import Users from './components/users';
@@ -12,13 +14,18 @@ function App() {
     <BrowserRouter>
       <React.Fragment>
         <div className="App">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="posts" element={<Posts />} />
-            <Route path="posts/:id" element={<PostItem />} />
-            <Route path="users" element={<Users />} />
-            <Route path="users/:id" element={<UserItem />} />
-          </Routes>
+          <Header />
+          <main>
+            <div className="container mt-3">
+              <Routes>
+                <Route path="/" element={<Posts />} />
+                <Route path="posts" element={<Posts />} />
+                <Route path="posts/:id" element={<PostItem />} />
+                <Route path="users" element={<Users />} />
+                <Route path="users/:id" element={<UserItem />} />
+              </Routes>
+            </div>
+          </main>
         </div>
       </React.Fragment>
     </BrowserRouter>

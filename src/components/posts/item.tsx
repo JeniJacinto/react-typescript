@@ -25,9 +25,8 @@ const Item: React.FC = () => {
         <>
             {post && (
             <div>
-                <h2>Post Item ID: { id }</h2><br />
-                <a href="/posts">Return</a>
-                <table>
+                <h2 className="p-2 bg-info text-white text-center">Post Item ID: { id }</h2><br />
+                <table className="table table-striped">
                     <thead>
                         <th>UserId</th>
                         <th>ID</th>
@@ -43,6 +42,9 @@ const Item: React.FC = () => {
                             </tr>
                     </tbody>
                 </table>
+                <div className="d-grid">
+                    <a href="/posts" className="btn btn-primary btn-block">Return Post List</a>
+                </div>
             </div>
             )}
         </>
